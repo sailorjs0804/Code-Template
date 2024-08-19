@@ -1,0 +1,39 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+# See https://pre-commit.com/ for usage and config
+exclude: '(\.html)|(\.ipynb)'
+default_stages: [commit]
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.2.0
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
+  - repo: https://github.com/psf/black
+    rev: 22.3.0
+    hooks:
+      - id: black
+        language_version: python3.10
+
+  - repo: https://github.com/pycqa/flake8
+    rev: 3.9.2
+    hooks:
+      - id: flake8
+        # Check for Python syntax errors
+        args:
+          [
+            "--select",
+            "E9,F63,F7,F82",
+            "--ignore",
+            "F704,F821",
+            "--exclude",
+            "jupyter_notebook_config.py,jupyter_server_config.py,prescription_pb2.py,*/notebooks/*.py",
+          ]
+
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        name: isort (python)
