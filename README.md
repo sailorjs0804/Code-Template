@@ -1,5 +1,5 @@
-# LLM-Rec
-基于LLM的酒店推荐系统
+# Code-Template
+代码提交模板
 
 ## Init project
 ```sh
